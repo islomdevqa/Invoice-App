@@ -38,9 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # second party apps
-    'profiles',
-    'receivers_app',
-    'invoices_app',
+    'profile_app',
+    'receiver_app',
+    'invoice_app',
 ]
 
 MIDDLEWARE = [

@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class ReceiversAppConfig(AppConfig):
+class InvoiceAppConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'receivers_app'
+    name = 'invoice_app'
