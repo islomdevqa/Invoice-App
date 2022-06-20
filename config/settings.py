@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # second party apps
-    'invoice_app',
+    'profiles',
     'receivers_app',
     'invoices_app',
 ]

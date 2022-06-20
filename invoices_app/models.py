@@ -1,10 +1,10 @@
 from django.db import models
-from invoices_app.models import Profile
+from profiles.models import Profile
 from receivers_app.models import Receiver
 
 # Create your models here.
 class Invoice(models.Model):
-    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    # profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
     receiver = models.ForeignKey(Receiver, on_delete=models.CASCADE)
     number = models.CharField(max_length=150)
     completion_date = models.DateField()
