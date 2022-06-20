@@ -28,7 +28,7 @@ def _deactivate(args):
 _deactivate(["nondestructive"])
 aliases["deactivate"] = _deactivate
 
-$VIRTUAL_ENV = r"/home/lenovo/Invoice App/invoice-env"
+$VIRTUAL_ENV = r"/home/lenovo/Invoice-App/invoice-env"
 
 $_OLD_VIRTUAL_PATH = $PATH
 $PATH = $PATH[:]
