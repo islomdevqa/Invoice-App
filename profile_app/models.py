@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from .utils import generate_account_number
 
 # Create your models here.
 class Profile(models.Model):
@@ -13,6 +14,11 @@ class Profile(models.Model):
     def __str__(self):
         return f"Profile of: {self.user.username}"
 
-    def clean(self):
-        if len(self.account_number) != 12:
-            raise ValidationError("Bank account number must be 12 character long!")
+    def save(self, *args, **kwargs):
+        if self.account_number == "":
+            self.account_number = generate_account_number()
+        return super().save(*args, **kwargs)
+
+    # def clean(self):
+    #     if len(self.account_number) != 12:
+    #         raise ValidationError("Bank account number must be 12 character long!")
