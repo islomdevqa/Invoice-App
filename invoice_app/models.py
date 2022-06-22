@@ -23,8 +23,15 @@ class Invoice(models.Model):
     def __str__(self):
         return f"Invoice number: {self.number}, pk: {self.pk}"
 
+    def get_tags(self):
+        return self.tag.all()
+
     def get_positions(self):
-        pass
+        return self.position_set.all()
 
     def get_total_amount(self):
-        pass
+        total = 0
+        qs = self.get_positions()
+        for pos in qs:
+            total = pos.amount
+        return total
