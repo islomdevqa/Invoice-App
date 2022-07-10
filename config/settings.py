@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'profile_app',
     'receiver_app',
     'position_app',
+    # third party apps
+    'import_export',
 ]
 
 MIDDLEWARE = [
