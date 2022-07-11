@@ -16,16 +16,34 @@ class TagAdmin(ExportActionMixin, admin.ModelAdmin):
 class InvoiceResource(resources.ModelResource):
     profile = Field()
     receiver = Field()
+    created = Field()
+    closed = Field()
+    positions = Field()
 
     class Meta:
         model = Invoice
-        fields = "__all__"
+        fields = ["id", "profile", "receiver", "number", "completion_date", "issue_date", "payment_date", "created_time", "closed", "positions"]
 
-    def dev_profile(self, obj):
+    def dehydrate_profile(self, obj):
         return obj.profile.user.username
 
-    def dev_receiver(self, obj):
+    def dehydrate_receiver(self, obj):
         return obj.receiver.name
+
+    def dehydrate_created(self, obj):
+        return obj.created.strftime("%d-%m-%y")
+
+    def dehydrate_closed(self, obj):
+        if obj.closed == True:
+            return "True"
+        else:
+            return "False"
+
+    def dehydrate_positions(self, obj):
+        position_list = [x.title for x in obj.positions]
+        position_string = ", ".join(position_list)
+        return position_string
+
 
 class InvoiceAdmin(ExportActionMixin, admin.ModelAdmin):
     resources_class = InvoiceResource
