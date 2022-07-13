@@ -19,10 +19,11 @@ class InvoiceResource(resources.ModelResource):
     created = Field()
     closed = Field()
     positions = Field()
+    total_amount = Field()
 
     class Meta:
         model = Invoice
-        fields = ["id", "profile", "receiver", "number", "completion_date", "issue_date", "payment_date", "created_time", "closed", "positions"]
+        fields = ["id", "profile", "receiver", "number", "completion_date", "issue_date", "payment_date", "created_time", "closed", "positions", "total_amount"]
 
     def dehydrate_profile(self, obj):
         return obj.profile.user.username
@@ -43,6 +44,9 @@ class InvoiceResource(resources.ModelResource):
         position_list = [x.title for x in obj.positions]
         position_string = ", ".join(position_list)
         return position_string
+
+    def dehydrate_total_amount(self, obj):
+        return obj.total_amount
 
 
 class InvoiceAdmin(ExportActionMixin, admin.ModelAdmin):
