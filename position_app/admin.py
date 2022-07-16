@@ -21,7 +21,7 @@ class PositionResource(resources.ModelResource):
             return "-"
         return obj.description
 
-snd vjhdfjvhdfvdfv dfhvbjkdf
+
 
 class PositionAdmin(ExportActionMixin, admin.ModelAdmin):
     resource_class = PositionResource
