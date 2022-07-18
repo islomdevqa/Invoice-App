@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block title %}Hello - {% endblock title %}
+{% block content %}
+    {% for obj in object_list %}
+        <b>{{obj.number}}</b>
+    {% endfor %}
+{% endblock content %}
