@@ -5,6 +5,6 @@ from .models import Invoice
 # Create your views here.
 class InvoiceListView(ListView):
     model = Invoice
-    # template_name = "invoice_app/main.html" #default invoice_list.html
+    template_name = "invoice_app/main.html"
     # paginate_by
-    # context_object_name = 'qs'
+    context_object_name = 'qs'

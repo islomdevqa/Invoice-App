@@ -1,4 +1,4 @@
-from django.path import urls
+from django.urls import path
 from .views import InvoiceListView
 
 app_name = 'invoice_app'
