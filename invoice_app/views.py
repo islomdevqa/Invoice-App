@@ -1,7 +1,11 @@
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import ListView
+from django.views.generic import (
+    ListView,
+    FormView,
+)
 from .models import Invoice
 from profile_app.models import Profile
+from .forms import InvoiceForm
 
 # Create your views here.
 class InvoiceListView(ListView):
@@ -16,3 +20,12 @@ class InvoiceListView(ListView):
         qs = Invoice.objects.filter(profile=profile).order_by('-created_time')
         # return qs
         return super().get_queryset().filter(profile=profile).order_by('-created_time')
+
+class InvoiceFormView(FormView):
+    form_class = InvoiceForm
+    template_name = 'invoice_app/create.html'
+    success_url =
+
+    def form_valid(self, form):
+        return super().form_valid(form)
+
