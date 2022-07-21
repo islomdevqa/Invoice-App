@@ -44,7 +44,10 @@ INSTALLED_APPS = [
     'position_app',
     # third party apps
     'import_export',
+    'crispy_forms'
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
