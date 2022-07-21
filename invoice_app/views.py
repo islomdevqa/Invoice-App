@@ -28,5 +28,9 @@ class InvoiceFormView(FormView):
     success_url = reverse_lazy("invoice_app:main")
 
     def form_valid(self, form):
+        profile = Profile.objects.get(user=self.request.user)
+        instance = form.save(commit=False)
+        instance.profile = profile
+        form.save()
         return super().form_valid(form)
 
