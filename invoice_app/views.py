@@ -6,6 +6,7 @@ from django.views.generic import (
 from .models import Invoice
 from profile_app.models import Profile
 from .forms import InvoiceForm
+from django.urls import reverse_lazy
 
 # Create your views here.
 class InvoiceListView(ListView):
@@ -24,7 +25,7 @@ class InvoiceListView(ListView):
 class InvoiceFormView(FormView):
     form_class = InvoiceForm
     template_name = 'invoice_app/create.html'
-    success_url =
+    success_url = reverse_lazy("invoice_app:main")
 
     def form_valid(self, form):
         return super().form_valid(form)
