@@ -43,3 +43,5 @@ class InvoiceFormView(LoginRequiredMixin, FormView):
 
 class SimpleTemplateView(TemplateView):
     template_name = 'invoice_app/simple_template.html'
+
+# git 3 commit uchun yozilgan message.
