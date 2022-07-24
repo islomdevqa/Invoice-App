@@ -27,13 +27,18 @@ class InvoiceListView(LoginRequiredMixin, ListView):
 class InvoiceFormView(LoginRequiredMixin, FormView):
     form_class = InvoiceForm
     template_name = 'invoice_app/create.html'
-    success_url = reverse_lazy("invoice_app:main")
+    # success_url = reverse_lazy("invoice_app:main")
+    i_instance = None
+
+    def get_success_url(self):
+        return reverse('invoice_app:simple-template', kwargs={'pk':self.i_instance.pk})
 
     def form_valid(self, form):
         profile = Profile.objects.get(user=self.request.user)
         instance = form.save(commit=False)
         instance.profile = profile
         form.save()
+        self.i_instance = instance
         return super().form_valid(form)
 
 class SimpleTemplateView(TemplateView):
