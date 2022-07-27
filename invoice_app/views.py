@@ -7,7 +7,7 @@ from django.views.generic import (
 from .models import Invoice
 from profile_app.models import Profile
 from .forms import InvoiceForm
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
@@ -44,4 +44,3 @@ class InvoiceFormView(LoginRequiredMixin, FormView):
 class SimpleTemplateView(TemplateView):
     template_name = 'invoice_app/simple_template.html'
 
-# git 3 commit uchun yozilgan message.
