@@ -35,8 +35,9 @@
                     </li>
                 {% endfor %}
 
-                <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
+                <li class="page-item {% if page_obj.has_next %} {% else %}disabled{% endif %}">
+                    <a {% if page_obj.has_next %}  href="?page={{page_obj.next_page_number}}"
+                    {% endif %} class="page-link">Next</a>
                 </li>
             </ul>
         </nav>
