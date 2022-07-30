@@ -14,7 +14,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 class InvoiceListView(LoginRequiredMixin, ListView):
     model = Invoice
     template_name = "invoice_app/main.html"
-    # paginate_by
+    paginate_by = 2
     context_object_name = 'qs'
 
     def get_queryset(self):
