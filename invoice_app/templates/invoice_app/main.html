@@ -1,7 +1,17 @@
 {% extends "base.html" %}
-
 {% block title %}Hello - {% endblock title %}
+
 {% block content %}
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == "info" %}
+                <div class="alert alert-primary mt-2">
+                    {{message}}
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
     {% if qs %}
         {% for obj in qs %}
             <div class="card mb-2" style="width:100%">
