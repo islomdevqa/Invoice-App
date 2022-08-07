@@ -2,13 +2,16 @@ from django.shortcuts import render, get_object_or_404
 from django.views.generic import (
     ListView,
     FormView,
-    TemplateView
+    TemplateView,
+    DetailView,
+    UpdateView
 )
 from .models import Invoice
 from profile_app.models import Profile
 from .forms import InvoiceForm
 from django.urls import reverse_lazy, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib import messages
 
 # Create your views here.
 class InvoiceListView(LoginRequiredMixin, ListView):
@@ -41,6 +44,21 @@ class InvoiceFormView(LoginRequiredMixin, FormView):
         self.i_instance = instance
         return super().form_valid(form)
 
-class SimpleTemplateView(TemplateView):
+class SimpleTemplateView(DetailView):
+    model = Invoice
     template_name = 'invoice_app/simple_template.html'
+
+# class SimpleTemplateView(TemplateView):
+#     template_name = 'invoice_app/simple_template.html'
+
+class InvoiceUpdateView(UpdateView):
+    model = Invoice
+    template_name = 'invoice_app/update.html'
+    form_class = InvoiceForm
+    success_url = reverse_lazy('invoice_app:main')
+
+    def form_valid(self, form):
+        instance = form.save()
+        messages.info(self.request, f"Successfully updated invoice - {instance.number}")
+        return super().form_valid(form)
 
