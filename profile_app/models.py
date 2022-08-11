@@ -10,7 +10,8 @@ class Profile(models.Model):
     company_info = models.TextField()
     created_time = models.DateTimeField(auto_now_add=True)
     updated_time = models.DateTimeField(auto_now=True)
-
+    avatar = models.ImageField(default='images/avatar.png')
+    company_logo = models.ImageField(default='images/no_photo.png')
     def __str__(self):
         return f"Profile of: {self.user.username}"
 
