@@ -8,7 +8,7 @@ from django.views.generic import (
 )
 from .models import Invoice
 from profile_app.models import Profile
-from profile_app.forms import PositionForm
+from position_app.forms import PositionForm
 from .forms import InvoiceForm
 from django.urls import reverse_lazy, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -51,7 +51,7 @@ class SimpleTemplateView(DetailView):
 
 class AddPositionsFormView(FormView):
     form_class = PositionForm
-    template_name = 'invoices/detail.html'
+    template_name = 'invoice_app/detail.html'
 
     def get_success_url(self):
         return self.request.path
