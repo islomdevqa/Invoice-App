@@ -13,7 +13,7 @@ from .forms import InvoiceForm
 from django.urls import reverse_lazy, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
-
+from receiver_app.models import Receiver
 # Create your views here.
 class InvoiceListView(LoginRequiredMixin, ListView):
     model = Invoice
@@ -72,6 +72,7 @@ class AddPositionsFormView(FormView):
         context['obj'] = invoice_obj
         context['qs'] = qs
         return context
+
 class InvoiceUpdateView(UpdateView):
     model = Invoice
     template_name = 'invoice_app/update.html'
