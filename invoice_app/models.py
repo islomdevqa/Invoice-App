@@ -36,5 +36,5 @@ class Invoice(models.Model):
         total = 0
         qs = self.positions
         for pos in qs:
-            total = pos.amount
+            total += pos.amount
         return total
