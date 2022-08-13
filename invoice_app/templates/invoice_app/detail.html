@@ -6,6 +6,57 @@ detail page
 
 {% block content %}
 
+<!-- Add Positions Modal -->
+<div class="modal fade" id="addPositionsModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Add positions</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Close Invoice Modal -->
+<div class="modal fade" id="closeInvoiceModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Warning</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div>
+    {% if not obj.closed %}
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addPositionsModal">
+            + Add positions
+        </button>
+        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#closeInvoiceModal">
+            Close
+        </button>
+    {% else %}
+        <a href="#" class="btn btn-danger">pdf</a>
+    {% endif %}
+</div>
+
     {% if messages %}
         {% for message in messages %}
             {% if message.tags == "info" %}
@@ -17,7 +68,7 @@ detail page
     {% endif %}
 
     <div class="mt-3">
-        <h5>Receiver {{receiver.name}}</h5>
+        <h5>Receiver: Islom</h5>
         <hr>
         <h3>Positions</h3>
 
